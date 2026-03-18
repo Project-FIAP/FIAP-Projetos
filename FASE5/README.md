@@ -1,7 +1,7 @@
 # FIAP - Faculdade de Informática e Administração Paulista
 
 <p align="center">
-<a href= "https://www.fiap.com.br/"><img src="FASE2/assets/logo-fiap.png" alt="FIAP - Faculdade de Informática e Admnistração Paulista" border="0" width=40% height=40%></a>
+<a href= "https://www.fiap.com.br/"><img src="FASE5/assets/logo-fiap.png" alt="FIAP - Faculdade de Informática e Admnistração Paulista" border="0" width=40% height=40%></a>
 </p>
 
 <br>
@@ -39,22 +39,26 @@ Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:
 
 Utilizamos a AWS Pricing Calculator para estimar custos de uma instância EC2 com:
 
-2 vCPU
+- 2 vCPU
 
-~1 GiB RAM
+- 1 GiB RAM
 
-50 GB armazenamento
+- 50 GB armazenamento
 
-Linux
+- Linux
 
-Uso contínuo (On-Demand)
+- Uso contínuo (On-Demand)
 
 ## 🌎 Resultados
-Região	Custo estimado
-São Paulo (BR)	Maior custo
-Virgínia (EUA)	Menor custo
+Região	Custo estimado:
 
-📊 Inserir prints da calculadora aqui
+- São Paulo (BR)	Maior custo
+
+- Virgínia (EUA)	Menor custo
+
+📊 <p align="center">
+<img src="assets/CutoAWS.png" alt=" Custo AWS" border="0" width=30% height=30%>
+</p>
 
 ## 🧠 Análise
 
@@ -64,20 +68,17 @@ A região da Virgínia apresentou menor custo devido à maior escala da infraest
 
 Apesar do custo mais elevado, escolhemos a região de São Paulo devido a:
 
-Menor latência para sensores
+- Menor latência para sensores
 
-Atendimento à Lei Geral de Proteção de Dados
+- Atendimento à Lei Geral de Proteção de Dados
 
-Maior confiabilidade
+- Maior confiabilidade
 
-Conformidade legal
+- Conformidade legal
 
 ## 🎥 Vídeo
 
-Link do vídeo demonstrando a simulação na AWS Pricing Calculator:
-👉 (coloque aqui)
-
-
+- <a href="https://youtu.be/7zVw3dtK28c">Link do vídeo demonstrando a simulação na AWS Pricing Calculator</a>
 
 
   
