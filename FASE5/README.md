@@ -9,10 +9,9 @@
 ## IA_Underground
 
 ## 👨‍🎓 Integrantes: 
-- <a href="https://www.linkedin.com/company/inova-fusca">Danilo Marques Dantas</a>
+
 - <a href="https://www.linkedin.com/in/marlonmarinho/">Marlon Paulino Marinho</a>
 - <a href="https://www.linkedin.com/in/pedro-carvalho-cea-149658137/">Pedro Carvalho Rocha Lima</a> 
-- <a href="https://www.linkedin.com/in/viniciusl7">Vinicius Lisboa Porto</a> 
 - <a href="https://www.linkedin.com/in/vinigama">Vinicius de Santana Gama</a>
 
 ## 📜 Descrição
@@ -34,7 +33,51 @@ Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:
 - <b>README.md</b>: Arquivo que serve como guia e explicação geral sobre o projeto (o mesmo que você está lendo agora).
 
 
-## 🗃 Histórico de lançamentos
 
-* 0.1.0 - 14/10/2025
+
+## 💰 Comparação de Custos AWS
+
+Utilizamos a AWS Pricing Calculator para estimar custos de uma instância EC2 com:
+
+2 vCPU
+
+~1 GiB RAM
+
+50 GB armazenamento
+
+Linux
+
+Uso contínuo (On-Demand)
+
+## 🌎 Resultados
+Região	Custo estimado
+São Paulo (BR)	Maior custo
+Virgínia (EUA)	Menor custo
+
+📊 Inserir prints da calculadora aqui
+
+## 🧠 Análise
+
+A região da Virgínia apresentou menor custo devido à maior escala da infraestrutura da AWS.
+
+## ⚖️ Escolha Final
+
+Apesar do custo mais elevado, escolhemos a região de São Paulo devido a:
+
+Menor latência para sensores
+
+Atendimento à Lei Geral de Proteção de Dados
+
+Maior confiabilidade
+
+Conformidade legal
+
+## 🎥 Vídeo
+
+Link do vídeo demonstrando a simulação na AWS Pricing Calculator:
+👉 (coloque aqui)
+
+
+
+
   

@@ -9,10 +9,9 @@
 ## IA_Underground
 
 ## 👨‍🎓 Integrantes: 
-- <a href="https://www.linkedin.com/company/inova-fusca">Danilo Marques Dantas</a>
+
 - <a href="https://www.linkedin.com/in/marlonmarinho/">Marlon Paulino Marinho</a>
 - <a href="https://www.linkedin.com/in/pedro-carvalho-cea-149658137/">Pedro Carvalho Rocha Lima</a> 
-- <a href="https://www.linkedin.com/in/viniciusl7">Vinicius Lisboa Porto</a> 
 - <a href="https://www.linkedin.com/in/vinigama">Vinicius de Santana Gama</a>
 
 ## 📜 Descrição
