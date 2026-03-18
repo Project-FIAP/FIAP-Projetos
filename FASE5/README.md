@@ -30,7 +30,65 @@ Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:
 
 
 # Entrega 1
+## 🌱 Projeto FarmTech Solutions - Machine Learning
 
+Este projeto tem como objetivo analisar dados de condições climáticas e de cultivo para prever o rendimento agrícola (Yield) de diferentes culturas.
+
+Foram aplicadas técnicas de análise exploratória, clusterização e modelos de regressão supervisionada para identificar padrões e selecionar o melhor modelo preditivo.
+
+---
+
+## 📊 Tecnologias utilizadas
+
+- Python
+- Pandas
+- NumPy
+- Matplotlib / Seaborn
+- Scikit-learn
+
+---
+
+## 📓 Notebook
+
+A análise completa está disponível no notebook
+
+
+## 🤖 Modelos utilizados
+
+Foram testados os seguintes modelos:
+
+- Linear Regression
+- Decision Tree Regressor
+- Random Forest Regressor
+- SVR
+- Gradient Boosting Regressor
+
+---
+
+## 📈 Resultados
+
+O modelo **Random Forest** apresentou o melhor desempenho:
+
+- Menor erro (MAE)
+- Alto coeficiente de determinação (R²)
+
+O modelo SVR apresentou desempenho insatisfatório.
+
+---
+
+## 🧠 Principais insights
+
+- As variáveis climáticas possuem baixa correlação com o rendimento (Yield)
+- O tipo de cultura (Crop) tem forte influência no resultado
+- Existem outliers significativos na variável Yield
+
+---
+
+## 🎥 Vídeo demonstrativo
+
+<a href="https://youtu.be/7zVw3dtK28c">Link do vídeo demonstrando o ML</a>
+
+---
 
 # Entrega 2
 ## 💰 Comparação de Custos AWS
