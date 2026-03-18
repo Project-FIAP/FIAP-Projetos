@@ -22,19 +22,15 @@ Bem-vindo ao nosso reposiório de atividades do curso de Inteligência Artifical
 
 Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:
 
-- <b>FASE1</b>: Todos os projetos da FASE1
+- <b>assets</b>: Todas imagens do projeto
 
-- <b>FASE2</b>: Todos os projetos da FASE2
-
-- <b>FASE3</b>: Todos os projetos da FASE3
-
-- <b>FASE4</b>: Todos os projetos da FASE4
+- <b>FarmTech_na_Era_da_Cloud_Computing</b>: Base do Projeto
 
 - <b>README.md</b>: Arquivo que serve como guia e explicação geral sobre o projeto (o mesmo que você está lendo agora).
 
 
 
-
+# Entrega 2
 ## 💰 Comparação de Custos AWS
 
 Utilizamos a AWS Pricing Calculator para estimar custos de uma instância EC2 com:
