@@ -86,7 +86,7 @@ O modelo SVR apresentou desempenho insatisfatório.
 
 ## 🎥 Vídeo demonstrativo
 
-<a href="https://youtu.be/7zVw3dtK28c">Link do vídeo demonstrando o ML</a>
+<a href="https://youtu.be/w8Zcf0X_dA8">Link do vídeo demonstrando o ML</a>
 
 ---
 
