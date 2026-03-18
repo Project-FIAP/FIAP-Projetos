@@ -56,7 +56,7 @@ Região	Custo estimado:
 
 - Virgínia (EUA)	Menor custo
 
-📊 <p align="center">
+ <p align="center">
 <img src="assets/CustoAWS.png" alt=" Custo AWS" border="0" width=100% height=100%>
 </p>
 
