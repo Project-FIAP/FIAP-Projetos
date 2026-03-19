@@ -88,6 +88,10 @@ O modelo SVR apresentou desempenho insatisfatório.
 
 <a href="https://youtu.be/w8Zcf0X_dA8">Link do vídeo demonstrando o ML</a>
 
+## Link notbook colab
+
+<a href="https://colab.research.google.com/drive/1E66fjTNYMBFZ9pBKaYjUFMUG_f5q1558#scrollTo=o647zkwZdt7z">Link do notbook</a>
+
 ---
 
 # Entrega 2
