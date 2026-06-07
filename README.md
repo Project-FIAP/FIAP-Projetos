@@ -17,8 +17,6 @@ todas as fases do projeto.
 - <a href="https://www.linkedin.com/in/marlonmarinho/">Marlon Paulino Marinho</a>
 - <a href="https://www.linkedin.com/in/pedro-carvalho-cea-149658137/">Pedro Carvalho Rocha Lima</a>
 - <a href="https://www.linkedin.com/in/vinigama">Vinicius de Santana Gama</a>
-- Danilo Marques Dantas
-- Vinicius Lisboa Porto
 
 ## 📜 Descrição
 
