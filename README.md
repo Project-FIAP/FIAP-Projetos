@@ -52,8 +52,8 @@ Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:
 - <b>FASE6</b>: Visão computacional com YOLO (dataset customizado).
 - <b>FASE7</b>: **Launcher central** — inicia qualquer fase por um único menu/painel.
 - <b>AWS_Mensageria</b>: **Serviço de mensageria (Amazon SNS)** com alertas e ações corretivas.
-- <b>gerar_guia.py</b>: Gera o guia de instalação do projeto (`Guia_Instalacao_FarmTech.docx`).
-- <b>requirements.txt / requirements-cv.txt</b>: Dependências do projeto (geral e visão computacional).
+- <b>Guia_Instalacao_FarmTech.docx</b>: Guia de instalação do projeto.
+- <b>requirements.txt</b>: Todas as dependências do projeto (incluindo AWS/boto3 e visão computacional).
 - <b>README.md</b>: Este guia geral do projeto.
 
 ## 🎛️ Fase 7 — Launcher central

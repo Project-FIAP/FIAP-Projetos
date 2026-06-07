@@ -1,3 +1,8 @@
+# ╔══════════════════════════════════════════════════════════════════════════╗
+# ║  FarmTech Solutions — Dependências do projeto (todas as fases)             ║
+# ║  Instale com:  pip install -r requirements.txt                            ║
+# ╚══════════════════════════════════════════════════════════════════════════╝
+
 # ── Data Science Core (Fases 1, 3, 4, 5) ──────────────────────────────────────
 pandas>=2.0.0
 numpy>=1.24.0
@@ -20,6 +25,18 @@ ipython>=8.14.0
 
 # ── Leitura de Excel (Fase 5) ─────────────────────────────────────────────────
 openpyxl>=3.1.0
+
+# ── Mensageria na nuvem / Amazon SNS (AWS_Mensageria) ─────────────────────────
+boto3>=1.34.0
+
+# ── Visão Computacional / YOLO (Fase 6) ──────────────────────────────────────
+# Instala PyTorch CPU (~800 MB). Para GPU (CUDA 12.1):
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch>=2.1.0
+torchvision>=0.16.0
+ultralytics>=8.0.0
+opencv-python>=4.8.0
 
 # ── Utilitários compartilhados ────────────────────────────────────────────────
 Pillow>=10.0.0
