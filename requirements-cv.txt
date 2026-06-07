@@ -1,0 +1,10 @@
+# ── Visão Computacional / YOLO (Fase 6) ──────────────────────────────────────
+# Instala PyTorch CPU (~800 MB). Para GPU (CUDA 12.1):
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch>=2.1.0
+torchvision>=0.16.0
+
+# YOLO e OpenCV
+ultralytics>=8.0.0
+opencv-python>=4.8.0

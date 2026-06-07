@@ -25,8 +25,12 @@ Original file is located at
 # Bibliotecas fundamentais
 import pandas as pd
 import numpy as np
+import os
+import matplotlib
+matplotlib.use("Agg")  # gera as imagens como PNG, sem janelas que travam o script
 import matplotlib.pyplot as plt
 import seaborn as sns
+import time
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -48,6 +52,35 @@ sns.set_palette("husl")
 plt.rcParams['figure.figsize'] = (12, 6)
 plt.rcParams['font.size'] = 10
 
+# Pasta onde os gráficos gerados são salvos (ao lado deste script)
+GRAF_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "graficos")
+os.makedirs(GRAF_DIR, exist_ok=True)
+_graf_paths = []
+_graf_count = 0
+_GRAF_NOMES = [
+    "01_distribuicao_variaveis", "02_matriz_correlacao", "03_boxplot_npk",
+    "04_temperatura_umidade", "05_ph_precipitacao", "06_comparacao_culturas",
+    "07_comparacao_modelos", "08_matriz_confusao",
+]
+
+
+def salvar_grafico():
+    """Salva a figura atual em graficos/ e a fecha.
+
+    Substitui salvar_grafico(): com o backend Agg as janelas não abririam de qualquer
+    forma, e o show() interativo travava o script esperando o usuário fechar
+    cada janela. Aqui cada gráfico vira um arquivo PNG que pode ser aberto depois.
+    """
+    global _graf_count
+    nome = _GRAF_NOMES[_graf_count] if _graf_count < len(_GRAF_NOMES) else f"extra_{_graf_count}"
+    _graf_count += 1
+    caminho = os.path.join(GRAF_DIR, nome + ".png")
+    plt.savefig(caminho, dpi=120, bbox_inches="tight")
+    plt.close()
+    _graf_paths.append(caminho)
+    print(f"  🖼️  Gráfico salvo: {caminho}")
+
+
 print("✓ Bibliotecas importadas com sucesso")
 
 # Carregamento da base de dados
@@ -66,7 +99,7 @@ Nesta etapa inicial, vamos conhecer a estrutura da base, identificar padrões b�
 print("=" * 80)
 print("PRIMEIRAS LINHAS DA BASE")
 print("=" * 80)
-display(df.head(10))
+print(df.head(10))
 
 # Informações gerais sobre a base
 print("=" * 80)
@@ -87,7 +120,7 @@ info_df = pd.DataFrame({
     'Valores Ausentes': df.isnull().sum(),
     '% Ausentes': (df.isnull().sum() / len(df) * 100).round(2)
 })
-display(info_df)
+print(info_df)
 
 print("\n✓ Base de dados completa: nenhum valor ausente encontrado")
 
@@ -110,7 +143,7 @@ print("ESTATÍSTICAS DESCRITIVAS DAS VARIÁVEIS AMBIENTAIS E DE SOLO")
 print("=" * 80)
 
 stats_desc = df.describe().round(2)
-display(stats_desc)
+print(stats_desc)
 
 print("\nInterpretação:")
 print("  • N (Nitrogênio): varia de 0 a 140 kg/ha, média de 50.55 kg/ha")
@@ -151,7 +184,7 @@ for idx, (var, titulo) in enumerate(zip(variaveis, titulos)):
 fig.delaxes(axes[1, 3])
 
 plt.tight_layout()
-plt.show()
+salvar_grafico()
 
 print("\nInsights do Gráfico 1:")
 print("  • Nitrogênio: distribuição bimodal, indicando grupos de culturas com baixa e alta demanda")
@@ -170,7 +203,7 @@ sns.heatmap(correlation_matrix, annot=True, fmt='.2f', cmap='coolwarm',
 plt.title('Matriz de Correlação entre Variáveis Ambientais e de Solo',
           fontsize=14, fontweight='bold', pad=20)
 plt.tight_layout()
-plt.show()
+salvar_grafico()
 
 print("\nInsights do Gráfico 2:")
 print("  • Baixa correlação entre as variáveis (máximo ~0.3), indicando independência")
@@ -194,7 +227,7 @@ for idx, (nutriente, nome) in enumerate(zip(nutrientes, nomes_nutrientes)):
     axes[idx].set_ylabel('')
 
 plt.tight_layout()
-plt.show()
+salvar_grafico()
 
 print("\nInsights do Gráfico 3:")
 print("  • Culturas apresentam demandas nutricionais muito distintas")
@@ -221,7 +254,7 @@ plt.title('Relação entre Temperatura e Umidade por Cultura', fontsize=14, font
 plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left', ncol=2)
 plt.grid(True, alpha=0.3)
 plt.tight_layout()
-plt.show()
+salvar_grafico()
 
 print("\nInsights do Gráfico 4:")
 print("  • Culturas formam clusters distintos no espaço temperatura-umidade")
@@ -256,7 +289,7 @@ axes[1].set_xlabel('Precipitação (mm)')
 axes[1].set_ylabel('')
 
 plt.tight_layout()
-plt.show()
+salvar_grafico()
 
 print("\nInsights do Gráfico 5:")
 print("  • Arroz: requer alta precipitação (>200mm) e pH neutro a levemente ácido")
@@ -319,7 +352,7 @@ df_comparacao['Perfil Ideal'] = perfil_ideal
 print("\n" + "=" * 80)
 print("TABELA COMPARATIVA")
 print("=" * 80)
-display(df_comparacao.round(2))
+print(df_comparacao.round(2))
 
 # Visualização comparativa
 fig, axes = plt.subplots(2, 4, figsize=(18, 10))
@@ -356,7 +389,7 @@ for idx, var in enumerate(variaveis):
 fig.delaxes(axes[1, 3])
 
 plt.tight_layout()
-plt.show()
+salvar_grafico()
 
 """### 4.2. Análise Detalhada por Cultura"""
 
@@ -534,6 +567,18 @@ print("  Importante para algoritmos sensíveis à escala (KNN, SVM)")
 
 """### 5.2. Modelo 1: Random Forest"""
 
+# Aviso de tempo: o treino dos 5 modelos (com validação cruzada) é a etapa
+# mais lenta — o Gradient Boosting sozinho leva ~2 min. Sem este aviso o
+# usuário acha que travou. flush=True garante que apareça imediatamente.
+_t_treino = time.time()
+print("\n" + "█" * 64)
+print("  ⏳  TREINANDO OS MODELOS DE MACHINE LEARNING — AGUARDE")
+print("      Tempo estimado: cerca de 2 a 3 minutos.")
+print("      A tela vai parecer PARADA no 'MODELO 2' (Gradient Boosting):")
+print("      isso é normal, ele é o mais demorado. NÃO feche a janela.")
+print("      Ao terminar, os gráficos são salvos e a pasta abre sozinha.")
+print("█" * 64, flush=True)
+
 print("\n" + "=" * 80)
 print("MODELO 1: RANDOM FOREST")
 print("=" * 80)
@@ -585,6 +630,11 @@ print("  • Cada árvore corrige erros da anterior")
 print("  • Alta performance, mas mais lento para treinar")
 print("  • Sensível a hiperparâmetros")
 
+# Este é o gargalo (~2 min). Avisa e mostra o tempo decorrido ao terminar.
+print("\n  ⏳  ESTE É O MODELO MAIS DEMORADO (~2 minutos).")
+print("      Treinando agora... a tela fica parada de propósito. Aguarde.",
+      flush=True)
+
 # Treinamento
 gb_model = GradientBoostingClassifier(
     n_estimators=120,
@@ -606,6 +656,8 @@ print(f"\n✓ Acurácia no conjunto de teste: {acc_gb*100:.2f}%")
 # Cross-validation
 cv_scores_gb = cross_val_score(gb_model, X_train, y_train, cv=5, scoring='accuracy')
 print(f"✓ Acurácia média (5-fold CV): {cv_scores_gb.mean()*100:.2f}% (±{cv_scores_gb.std()*100:.2f}%)")
+print(f"\n  ✅  Parte demorada concluída em {time.time() - _t_treino:.0f}s. "
+      "Falta pouco — gerando os gráficos finais...", flush=True)
 
 """### 5.4. Modelo 3: Decision Tree"""
 
@@ -733,7 +785,7 @@ resultados = resultados.sort_values('Acurácia Teste', ascending=False).reset_in
 print("=" * 80)
 print("COMPARAÇÃO DE PERFORMANCE DOS MODELOS")
 print("=" * 80)
-display(resultados)
+print(resultados)
 
 melhor_modelo = resultados.iloc[0]['Modelo']
 melhor_acc = resultados.iloc[0]['Acurácia Teste']
@@ -765,7 +817,7 @@ axes[1].set_title('Acurácia com Cross-Validation (5-fold)', fontweight='bold')
 axes[1].set_ylim([90, 100])
 
 plt.tight_layout()
-plt.show()
+salvar_grafico()
 
 print("\nInsights:")
 print(f"  • {melhor_modelo} demonstra a melhor performance geral")
@@ -809,7 +861,7 @@ plt.xlabel('Classe Prevista', fontweight='bold')
 plt.xticks(rotation=45, ha='right')
 plt.yticks(rotation=0)
 plt.tight_layout()
-plt.show()
+salvar_grafico()
 
 print("\nInterpretação da Matriz de Confusão:")
 print("  • Diagonal principal (azul escuro): predições corretas")
@@ -1001,3 +1053,15 @@ tecnologias que tornem a agricultura mais eficiente, sustentável e rentável.
 print("=" * 80)
 print("FIM DO RELATÓRIO")
 print("=" * 80)
+
+# Abre automaticamente a pasta com os gráficos gerados (defina
+# FARMTECH_NO_OPEN=1 para desativar, ex.: em execuções automatizadas).
+print(f"\n{len(_graf_paths)} gráficos gerados em: {GRAF_DIR}")
+for _p in _graf_paths:
+    print(f"  • {os.path.basename(_p)}")
+if os.environ.get("FARMTECH_NO_OPEN") != "1":
+    try:
+        os.startfile(GRAF_DIR)  # Windows: abre o Explorer na pasta dos gráficos
+        print("\n📂 Pasta de gráficos aberta automaticamente.")
+    except (AttributeError, OSError):
+        pass  # sistemas sem os.startfile (não-Windows) — só lista os caminhos

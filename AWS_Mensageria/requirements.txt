@@ -1,0 +1,2 @@
+# Dependências do serviço de mensageria AWS (Amazon SNS)
+boto3>=1.34.0

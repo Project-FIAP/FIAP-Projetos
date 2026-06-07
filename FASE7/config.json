@@ -1,0 +1,81 @@
+{
+  "sector": "Agronegócio",
+  "project_name": "FarmTech Solutions",
+  "team": "IA_Underground",
+  "description": "Sistema integrado de gestão agrícola inteligente. Adaptável a qualquer setor editando este arquivo.",
+  "phases": [
+    {
+      "id": "1",
+      "name": "Gestão de Áreas e Insumos",
+      "description": "Cálculo de área de plantio (café/soja), manejo de insumos por metro/hectare e exportação CSV.",
+      "type": "cli_python",
+      "path": "FASE1/farmtech_app.py",
+      "enabled": true
+    },
+    {
+      "id": "2a",
+      "name": "Gestão de Sementes (Oracle DB)",
+      "description": "CRUD completo de sementes com persistência em Oracle. Requer conexão com oracle.fiap.com.br.",
+      "type": "cli_python",
+      "path": "FASE2/PythonAlem/#Gerenciamento de Sementes.py",
+      "enabled": true
+    },
+    {
+      "id": "2b",
+      "name": "Consulta Meteorológica",
+      "description": "Consulta API Open Meteo (R) com análise estatística e recomendações agrícolas para os próximos 7 dias.",
+      "type": "r_script",
+      "path": "FASE1/r_app/weather_api.R",
+      "enabled": true
+    },
+    {
+      "id": "2c",
+      "name": "Análise R — Áreas por Cultura",
+      "description": "Estatísticas descritivas (média, desvio, min/max, total ha) do CSV exportado pela Fase 1.",
+      "type": "r_script",
+      "path": "FASE1/r_app/analysis.r",
+      "enabled": true
+    },
+    {
+      "id": "3",
+      "name": "Classificação de Culturas (ML)",
+      "description": "5 algoritmos ML para previsão de cultura ideal (RF, SVM, KNN, GB, DT). Requer: pandas, scikit-learn, matplotlib, seaborn.",
+      "type": "cli_python",
+      "path": "FASE3/A_primeira_técnica_de_aprendizado_de_máquina.py",
+      "enabled": true
+    },
+    {
+      "id": "4t",
+      "name": "Treinar Modelos IoT",
+      "description": "Treina Regressão Linear (umidade) e Regressão Logística (irrigação) a partir dos dados dos sensores ESP32.",
+      "type": "cli_python",
+      "path": "FASE4/CAP1/treinar_modelo.py",
+      "enabled": true
+    },
+    {
+      "id": "4d",
+      "name": "Dashboard ML — Irrigação",
+      "description": "Dashboard Streamlit com previsões de umidade e irrigação, análise exploratória e recomendações. Execute 4t antes.",
+      "type": "streamlit",
+      "path": "FASE4/CAP1/dashboard.py",
+      "port": 8502,
+      "enabled": true
+    },
+    {
+      "id": "5",
+      "name": "Previsão de Rendimento (Cloud)",
+      "description": "ML para previsão de crop yield. Modelos: Linear, RF, DT, SVR, GB. Análise de custos AWS São Paulo vs Virginia.",
+      "type": "jupyter",
+      "path": "FASE5/FarmTech_na_Era_da_Cloud_Computing/notebooks/ViniciusDeSantanaGama_rm566672_pbl_fase4.ipynb",
+      "enabled": true
+    },
+    {
+      "id": "6",
+      "name": "Visão Computacional (YOLO)",
+      "description": "Detecção de objetos com YOLOv5. Dataset customizado de 80 imagens rotuladas com MakeSense AI.",
+      "type": "jupyter",
+      "path": "FASE6/GoogleColab/IAUnderground_FASE6.ipynb",
+      "enabled": true
+    }
+  ]
+}
