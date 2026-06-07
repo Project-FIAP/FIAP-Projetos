@@ -84,8 +84,9 @@ FAIXAS_IDEAIS = {
 }
 
 # Caminho padrão para o CSV de sensores da Fase 3
+# (a pasta fica em FASE7/AWS_Mensageria, então sobe dois níveis até a raiz)
 CSV_PADRAO = os.path.join(
-    os.path.dirname(__file__), "..", "FASE3", "produtos_agricolas.csv"
+    os.path.dirname(__file__), "..", "..", "FASE3", "produtos_agricolas.csv"
 )
 
 

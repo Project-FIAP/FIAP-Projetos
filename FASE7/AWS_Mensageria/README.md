@@ -158,7 +158,7 @@ As credenciais do Learner Lab são **temporárias** e mudam a cada sessão do la
 
 ### 3) Definir as variáveis e rodar
 ```powershell
-cd AWS_Mensageria
+cd FASE7\AWS_Mensageria
 $env:SNS_TOPIC_ARN = "arn:aws:sns:us-east-1:891524684430:alertas-farmtech"
 $env:AWS_REGION = "us-east-1"
 python alerta_sensor_sns.py --csv leituras_exemplo.csv
@@ -204,7 +204,7 @@ Depois abra `assets/previa-email.html` no navegador e tire o print da
 
 ```
 FarmTech Solutions - Monitor de sensores (Fase 3) + Amazon SNS
-Arquivo de leituras: ...\AWS_Mensageria\leituras_exemplo.csv
+Arquivo de leituras: ...\FASE7\AWS_Mensageria\leituras_exemplo.csv
 Regiao AWS.........: us-east-1
 Topico SNS.........: arn:aws:sns:us-east-1:891524684430:alertas-farmtech
 Modo...............: ENVIO REAL
